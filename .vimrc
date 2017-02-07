@@ -191,3 +191,15 @@ let g:syntastic_check_on_wq = 0
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+
+
+"=============================================== Solarized =================================================
+syntax enable
+set background=dark
+let g:solarized_termcolors=16
+let g:solarized_visibility='high'
+let g:solarized_contrast='high'
+try
+  colorscheme solarized
+catch /^Vim\%((\a\+)\)\=:E185/
+endtry
