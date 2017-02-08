@@ -60,10 +60,11 @@ set gcr=a:blinkon0                        " Disable cursor blink
 set novisualbell                          " No sounds
 set noerrorbells                          " No noise
 set autoread                              " Reload files changed outside vim
-set laststatus=2                          " Always show status line
 set statusline+=%{fugitive#statusline()}  " Git Hotness
 set list listchars=tab:>.,trail:.         " Display tabs and trailing spaces visually
 set linebreak                             " Wrap lines at convenient points
+set laststatus=2                          " Always show status line
+set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:%l/%L%)\
 set nobackup
 set nowb
 set tabstop=4
@@ -76,8 +77,8 @@ set fileformat=unix
 set expandtab
 set t_Co=256
 set list
-"set ignorecase
-set incsearch
+set cmdheight=1
+set ignorecase smartcase
 au WinLeave * set nocursorline nocursorcolumn   " Highlight current line
 au WinEnter * set cursorline cursorcolumn
 set cursorline cursorcolumn
@@ -95,15 +96,20 @@ set viminfo='100,f1             " Save up to 100 marks, enable capital marks
 set autoindent
 set smartindent
 set smarttab
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
 set expandtab
 
 " Folds
+set foldenable
 set foldmethod=indent           " Fold based on indent
+set foldcolumn=0
 set foldnestmax=3               " Deepest fold is 3 levels
 set nofoldenable                " Dont fold by default
+setlocal foldlevel=1
+"set foldclose=all
+nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 
 " Leader setting
 let mapleader = ","             " Rebind <Leader> key
