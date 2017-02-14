@@ -69,9 +69,9 @@ set nobackup
 set nowb
 set tabstop=4
 set shiftwidth=4
-set textwidth=80                          " Make it obvious where 80 characters is
+set textwidth=79                          " Make it obvious where 79 characters is
 highlight ColorColumn ctermbg=gray
-set colorcolumn=80
+set colorcolumn=79
 set numberwidth=4
 set fileformat=unix
 set expandtab
