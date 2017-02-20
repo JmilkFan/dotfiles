@@ -12,6 +12,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'altercation/solarized'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
@@ -184,6 +185,7 @@ nmap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 "=============================================== Tagbar =================================================
 let g:tagbar_width=35
 let g:tagbar_autofocus=1
+let g:tagbar_ctags_bin ='/usr/local/bin/ctags'
 nmap <F3> :TagbarToggle<CR>
 
 
