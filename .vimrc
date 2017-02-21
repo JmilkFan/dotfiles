@@ -27,6 +27,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'powerline/fonts'
 Plugin 'tpope/vim-fugitive'
 Plugin 'christoomey/vim-run-interactive'
 
@@ -141,7 +142,7 @@ autocmd vimenter * if !argc() | NERDTree | endif
 " Close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 " Open a NERDTree
-nmap <F2> :NERDTreeToggle<CR>
+nmap <leader>n :NERDTreeToggle<CR>
 
 
 "=============================================== Ctrlp =================================================
@@ -184,7 +185,7 @@ nmap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:tagbar_width=35
 let g:tagbar_autofocus=1
 let g:tagbar_ctags_bin ='/usr/local/bin/ctags'
-nmap <F3> :TagbarToggle<CR>
+nmap <leader>b :TagbarToggle<CR>
 
 
 "=============================================== Syntastic =================================================
@@ -213,8 +214,13 @@ endtry
 
 "=============================================== Powerline =================================================
 let g:airline_powerline_fonts = 1
+let g:minBufExplForceSyntaxEnable = 1
+let g:Powerline_symbols= "fancy"
 set guifont=Source\ Code\ Pro\ for\ Powerline:h14
 set laststatus=2                          " Always show status line
 set encoding=utf-8
 set t_Co=256
-let g:Powerline_symbols= "fancy"
+set guifont=Source\ Code\ Pro\ for\ Powerline:h11
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
