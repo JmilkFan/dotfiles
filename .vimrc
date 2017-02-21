@@ -64,7 +64,6 @@ set autoread                              " Reload files changed outside vim
 set statusline+=%{fugitive#statusline()}  " Git Hotness
 set list listchars=tab:>.,trail:.         " Display tabs and trailing spaces visually
 set linebreak                             " Wrap lines at convenient points
-set laststatus=2                          " Always show status line
 set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:%l/%L%)\
 set nobackup
 set nowb
@@ -76,7 +75,6 @@ set colorcolumn=79
 set numberwidth=4
 set fileformat=unix
 set expandtab
-set t_Co=256
 set list
 set cmdheight=1
 set ignorecase smartcase
@@ -211,3 +209,12 @@ try
   colorscheme solarized
 catch /^Vim\%((\a\+)\)\=:E185/
 endtry
+
+
+"=============================================== Powerline =================================================
+let g:airline_powerline_fonts = 1
+set guifont=Source\ Code\ Pro\ for\ Powerline:h14
+set laststatus=2                          " Always show status line
+set encoding=utf-8
+set t_Co=256
+let g:Powerline_symbols= "fancy"
