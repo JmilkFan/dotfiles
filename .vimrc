@@ -216,11 +216,7 @@ endtry
 let g:airline_powerline_fonts = 1
 let g:minBufExplForceSyntaxEnable = 1
 let g:Powerline_symbols= "fancy"
-set guifont=Source\ Code\ Pro\ for\ Powerline:h14
 set laststatus=2                          " Always show status line
 set encoding=utf-8
 set t_Co=256
 set guifont=Source\ Code\ Pro\ for\ Powerline:h11
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
