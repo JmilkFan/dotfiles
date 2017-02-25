@@ -187,7 +187,7 @@ nmap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:tagbar_width=35
 let g:tagbar_autofocus=1
 let g:tagbar_ctags_bin ='/usr/local/bin/ctags'
-nmap <leader>b :TagbarToggle<CR>
+nmap <leader>c :TagbarToggle<CR>
 
 
 "=============================================== Syntastic =================================================
