@@ -1,2 +1,2 @@
 # dotfiles
-JmilkFan's dotfiles for Ubuntu
+JmilkFan's dotfiles for Macbook Pro
