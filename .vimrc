@@ -67,14 +67,17 @@ set autoread                              " Reload files changed outside vim
 set statusline+=%{fugitive#statusline()}  " Git Hotness
 set list listchars=tab:>.,trail:.         " Display tabs and trailing spaces visually
 set linebreak                             " Wrap lines at convenient points
+set wildmenu                              " Command auto complete
+set shortmess=atI
 set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:%l/%L%)\
 set nobackup
+set confirm
 set nowb
 set tabstop=4
 set shiftwidth=4
-set textwidth=79                          " Make it obvious where 79 characters is
+set textwidth=73                          " Make it obvious where 79 characters is
 highlight ColorColumn ctermbg=gray
-set colorcolumn=79
+set colorcolumn=73
 set numberwidth=4
 set fileformat=unix
 set expandtab
