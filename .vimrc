@@ -32,6 +32,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'christoomey/vim-run-interactive'
 Plugin 'nvie/vim-flake8'
 Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'tmhedberg/SimpylFold'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -87,9 +88,15 @@ set ignorecase smartcase
 au WinLeave * set nocursorline nocursorcolumn   " Highlight current line
 au WinEnter * set cursorline cursorcolumn
 set cursorline cursorcolumn
+set clipboard=unnamed
 
+"split navigations
 set splitbelow
 set splitright
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " Persistent Undo
 set undodir=~/.vim/backups
@@ -111,11 +118,15 @@ set expandtab
 
 " Folds
 set foldenable
-set foldmethod=indent           " Fold based on indent
 set foldcolumn=0
 set foldnestmax=3               " Deepest fold is 3 levels
 set nofoldenable                " Dont fold by default
-setlocal foldlevel=1
+
+set foldmethod=indent           " Fold based on indent
+set foldlevel=99
+" use space to open folds
+nnoremap <space> za
+
 "set foldclose=all
 nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 
@@ -130,7 +141,7 @@ nnoremap <Leader>r :RunInInteractiveShell<space>
 
 " python with virtualenv support
 py << EOF
-import os.path
+import os
 import sys
 import vim
 if 'VIRTUA_ENV' in os.environ:
@@ -164,7 +175,7 @@ au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 " Wrap text after a certain number of characters
-au BufRead,BufNewFile *.py,*.pyw, set textwidth=100
+au BufRead,BufNewFile *.py,*.pyw, set textwidth=79
 
 " Use UNIX (\n) line endings.
 au BufNewFile *.py,*.pyw,*.c,*.h set fileformat=unix
@@ -184,8 +195,6 @@ set backspace=indent,eol,start
 " Folding based on indentation:
 autocmd FileType python set foldmethod=indent
 
-" use space to open folds
-nnoremap <space> za
 
 "----------Stop python PEP 8 stuff--------------
 
@@ -246,6 +255,7 @@ nmap <leader>f :CtrlPMRU<CR>
 
 
 "=============================================== YouCompleteMe =================================================
+let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_autoclose_preview_window_after_completion=1
 let g:syntastic_always_populate_loc_list = 1
 let g:ycm_confirm_extra_conf = 0
@@ -258,6 +268,8 @@ let g:ycm_min_num_of_chars_for_completion=2
 let g:ycm_collect_identifiers_from_tags_files=1
 let g:ycm_error_symbol = '>>'
 let g:ycm_warning_symbol = '>*'
+nmap <leader>gf :YcmCompleter GoToDefinition<CR>
+nmap <leader>gl :YcmCompleter GoToDeclaration<CR>
 nmap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 
@@ -300,3 +312,7 @@ set laststatus=2                          " Always show status line
 set encoding=utf-8
 set t_Co=256
 set guifont=Source\ Code\ Pro\ for\ Powerline:h11
+
+
+"=============================================== SimpylFold =================================================
+let g:SimpylFold_docstring_preview=1
