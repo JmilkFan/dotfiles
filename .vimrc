@@ -20,7 +20,10 @@ Plugin 'vim-scripts/TaskList.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
 Plugin 'scrooloose/syntastic'
-Plugin 'python-mode/python-mode'
+" Plugin 'python-mode/python-mode'
+Plugin 'nvie/vim-flake8'
+Plugin 'andviro/flake8-vim'
+Plugin 'kevinw/pyflakes-vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-surround'
@@ -30,9 +33,8 @@ Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'powerline/fonts'
 Plugin 'tpope/vim-fugitive'
 Plugin 'christoomey/vim-run-interactive'
-Plugin 'nvie/vim-flake8'
 Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'tmhedberg/SimpylFold'
+" Plugin 'tmhedberg/SimpylFold'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -139,6 +141,7 @@ syntax on
 " Run commands that require an interactive shell
 nnoremap <Leader>r :RunInInteractiveShell<space>
 
+"------------Start Python PEP 8 stuff----------------
 " python with virtualenv support
 py << EOF
 import os
@@ -154,8 +157,6 @@ EOF
 "it would be nice to set tag files by the active virtualenv here
 "omnicomplete
 autocmd FileType python set omnifunc=pythoncomplete#Complete
-
-"------------Start Python PEP 8 stuff----------------
 
 " Number of spaces that a pre-existing tab is equal to.
 au BufRead,BufNewFile *py,*pyw,*.c,*.h set tabstop=4
@@ -194,8 +195,6 @@ set backspace=indent,eol,start
 
 " Folding based on indentation:
 autocmd FileType python set foldmethod=indent
-
-
 "----------Stop python PEP 8 stuff--------------
 
 
@@ -312,7 +311,3 @@ set laststatus=2                          " Always show status line
 set encoding=utf-8
 set t_Co=256
 set guifont=Source\ Code\ Pro\ for\ Powerline:h11
-
-
-"=============================================== SimpylFold =================================================
-let g:SimpylFold_docstring_preview=1
