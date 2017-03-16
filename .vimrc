@@ -21,9 +21,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
 Plugin 'scrooloose/syntastic'
 Plugin 'python-mode/python-mode'
-Plugin 'nvie/vim-flake8'
-" Plugin 'andviro/flake8-vim'
-" Plugin 'kevinw/pyflakes-vim'
+Plugin 'andviro/flake8-vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-surround'
@@ -78,9 +76,9 @@ set confirm
 set nowb
 set tabstop=4
 set shiftwidth=4
-set textwidth=73                          " Make it obvious where 79 characters is
+set textwidth=79                          " Make it obvious where 79 characters is
 highlight ColorColumn ctermbg=gray
-set colorcolumn=73
+set colorcolumn=79
 set numberwidth=4
 set fileformat=unix
 set expandtab
@@ -311,3 +309,11 @@ set laststatus=2                          " Always show status line
 set encoding=utf-8
 set t_Co=256
 set guifont=Source\ Code\ Pro\ for\ Powerline:h11
+
+"=============================================== flake8-vim =================================================
+let g:PyFlakeOnWrite = 1
+let g:PyFlakeCheckers = 'pep8'
+let g:PyFlakeAggressive = 0
+let g:PyFlakeCWindow = 6
+let g:PyFlakeSigns = 1
+let g:PyFlakeSignStart = 1
