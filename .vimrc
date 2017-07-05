@@ -14,24 +14,25 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'altercation/solarized'
 Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
-Plugin 'vim-scripts/TaskList.vim'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'SirVer/ultisnips'
 Plugin 'scrooloose/syntastic'
-" Plugin 'python-mode/python-mode'
-" Plugin 'andviro/flake8-vim'
+Plugin 'vim-scripts/TaskList.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'tpope/vim-surround'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'vim-scripts/indentpython.vim'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'powerline/fonts'
-Plugin 'tpope/vim-fugitive'
-Plugin 'christoomey/vim-run-interactive'
-Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'andviro/flake8-vim'
+
+" Plugin 'python-mode/python-mode'
+" Plugin 'SirVer/ultisnips'
+" Plugin 'tpope/vim-surround'
+" Plugin 'plasticboy/vim-markdown'
+" Plugin 'vim-scripts/indentpython.vim'
+" Plugin 'tpope/vim-fugitive'
+" Plugin 'christoomey/vim-run-interactive'
 " Plugin 'tmhedberg/SimpylFold'
 
 " All of your Plugins must be added before the following line
@@ -141,16 +142,16 @@ nnoremap <Leader>r :RunInInteractiveShell<space>
 
 "------------Start Python PEP 8 stuff----------------
 " python with virtualenv support
-py << EOF
-import os
-import sys
-import vim
-if 'VIRTUA_ENV' in os.environ:
-  project_base_dir = os.environ['VIRTUAL_ENV']
-  sys.path.insert(0, project_base_dir)
-  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-  execfile(activate_this, dict(__file__=activate_this))
-EOF
+" py << EOF
+" import os
+" import sys
+" import vim
+" if 'VIRTUA_ENV' in os.environ:
+"   project_base_dir = os.environ['VIRTUAL_ENV']
+"   sys.path.insert(0, project_base_dir)
+"   activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+"   execfile(activate_this, dict(__file__=activate_this))
+" EOF
 
 "it would be nice to set tag files by the active virtualenv here
 "omnicomplete
@@ -279,7 +280,7 @@ nmap <leader>c :TagbarToggle<CR>
 
 "=============================================== Syntastic =================================================
 " configure syntastic syntax checking to check on open as well as save
-let g:syntastic_check_on_open=1
+" let g:syntastic_check_on_open=1 " Using this option will be slow to open the file
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -310,10 +311,25 @@ set encoding=utf-8
 set t_Co=256
 set guifont=Source\ Code\ Pro\ for\ Powerline:h11
 
+
 "=============================================== flake8-vim =================================================
+let g:PyFlakeDisabledMessages = 'E501'
 let g:PyFlakeOnWrite = 1
 let g:PyFlakeCheckers = 'pep8'
 let g:PyFlakeAggressive = 0
 let g:PyFlakeCWindow = 6
 let g:PyFlakeSigns = 1
 let g:PyFlakeSignStart = 1
+nmap <leader>pt :PyFlakeToggle<CR>
+nmap <leader>pf :PyFlake<CR>
+nmap <leader>pa :PyFlakeAuto<CR>
+
+
+
+"=============================================== vim-easymotion =================================================
+let g:EasyMotion_smartcase = 1
+map <Leader><leader>h <Plug>(easymotion-linebackward)
+map <Leader><Leader>j <Plug>(easymotion-j)
+map <Leader><Leader>k <Plug>(easymotion-k)
+map <Leader><leader>l <Plug>(easymotion-lineforward)
+map <Leader><leader>. <Plug>(easymotion-repeat)
