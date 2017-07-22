@@ -25,8 +25,8 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'powerline/fonts'
 Plugin 'andviro/flake8-vim'
+Plugin 'python-mode/python-mode'
 
-" Plugin 'python-mode/python-mode'
 " Plugin 'SirVer/ultisnips'
 " Plugin 'tpope/vim-surround'
 " Plugin 'plasticboy/vim-markdown'
