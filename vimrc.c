@@ -24,8 +24,6 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'powerline/fonts'
-Plugin 'andviro/flake8-vim'
-Plugin 'python-mode/python-mode'
 
 " Plugin 'SirVer/ultisnips'
 " Plugin 'tpope/vim-surround'
@@ -39,7 +37,7 @@ Plugin 'python-mode/python-mode'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
-"filetype plugin on
+filetype plugin on
 "
 " Brief help
 " :PluginList       - lists configured plugins
@@ -139,71 +137,6 @@ syntax on
 
 " Run commands that require an interactive shell
 nnoremap <Leader>r :RunInInteractiveShell<space>
-
-"------------Start Python PEP 8 stuff----------------
-" python with virtualenv support
-" py << EOF
-" import os
-" import sys
-" import vim
-" if 'VIRTUA_ENV' in os.environ:
-"   project_base_dir = os.environ['VIRTUAL_ENV']
-"   sys.path.insert(0, project_base_dir)
-"   activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-"   execfile(activate_this, dict(__file__=activate_this))
-" EOF
-
-"it would be nice to set tag files by the active virtualenv here
-"omnicomplete
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-
-" Number of spaces that a pre-existing tab is equal to.
-au BufRead,BufNewFile *py,*pyw,*.c,*.h set tabstop=4
-
-"spaces for indents
-au BufRead,BufNewFile *.py,*pyw set shiftwidth=4
-au BufRead,BufNewFile *.py,*.pyw set expandtab
-au BufRead,BufNewFile *.py set softtabstop=4
-
-" Use the below highlight group when displaying bad whitespace is desired.
-highlight BadWhitespace ctermbg=red guibg=red
-
-" Display tabs at the beginning of a line in Python mode as bad.
-au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
-
-" Make trailing whitespace be flagged as bad.
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-
-" Wrap text after a certain number of characters
-au BufRead,BufNewFile *.py,*.pyw, set textwidth=79
-
-" Use UNIX (\n) line endings.
-au BufNewFile *.py,*.pyw,*.c,*.h set fileformat=unix
-
-" Set the default file encoding to UTF-8:
-set encoding=utf-8
-
-" For full syntax highlighting:
-let python_highlight_all=1
-
-" Keep indentation level from previous line:
-autocmd FileType python set autoindent
-
-" make backspaces more powerfull
-set backspace=indent,eol,start
-
-" Folding based on indentation:
-autocmd FileType python set foldmethod=indent
-"----------Stop python PEP 8 stuff--------------
-
-
-"=============================================== Set File Type Indent =================================================
-augroup myfiletypes
-  " Clear old autocmds in group
-  autocmd!
-  autocmd FileType python set ai tabstop=4 shiftwidth=4 softtabstop=4 et
-  autocmd FileType python set foldmethod=indent nosmartindent
-augroup END
 
 
 "=============================================== NERD Tree =================================================
